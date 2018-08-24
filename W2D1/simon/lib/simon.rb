@@ -19,7 +19,11 @@ class Simon
   end
 
   def show_sequence
-
+    @seq.each do |color|
+      puts color.colorize(color.to_sym)
+      sleep(1)
+      system("clear")
+    end
   end
 
   def require_sequence
