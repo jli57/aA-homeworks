@@ -11,7 +11,6 @@ class Simon
   def play
     until @game_over
       take_turn
-
     end
     if @game_over
       game_over_message
@@ -35,6 +34,7 @@ class Simon
       sleep(1)
       system("clear")
     end
+
   end
 
   def require_sequence
