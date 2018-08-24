@@ -19,12 +19,12 @@ class Simon
   end
 
   def take_turn
-    show_sequence
-    guess = require_sequence
-    if guess == @seq
+    unless @game_over
       round_success_message
       @sequence_length += 1
     end
+    show_sequence
+    guess = require_sequence
   end
 
   def show_sequence
@@ -67,3 +67,5 @@ class Simon
     @seq = []
   end
 end
+
+game = Simon.new
