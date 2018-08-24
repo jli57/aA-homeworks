@@ -23,7 +23,13 @@ class Simon
   end
 
   def require_sequence
-
+    i = @sequence_length
+    guess = []
+    while i > 0
+      guess << gets.chomp
+      i += 1
+    end
+    guess
   end
 
   def add_random_color
