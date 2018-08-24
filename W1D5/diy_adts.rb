@@ -22,7 +22,7 @@ end
 
 # test
 # s = Stack.new
-# 
+#
 # p s.push(4)
 # p s.push(5)
 #
@@ -58,30 +58,39 @@ end
 
 
 class Map
+
+
   def initialize
-    @map = {}
+    @map = []
   end
 
   def set(key, value)
-    @map[key] = value
+    @map.push([key, value])
   end
 
   def get(key)
-    @map[key]
+    @map.each do |pair|
+      k, val = pair
+      return val if k == key
+    end
+    nil
   end
 
   def delete(key)
-    @map.delete(key)
+    @map.each_with_index do |pair, ind|
+      @map.delete_at(ind) if pair.first == key
+    end
   end
 
   def show
     @map
   end
+
 end
 
 # test
-# m = Map.new
-#
+m = Map.new
+
 # p m.set("Jingna", "Awesome")
 # p m.set("AppAcademy", "Coding Bootcamp")
 #
