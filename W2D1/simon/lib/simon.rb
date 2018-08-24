@@ -23,11 +23,12 @@ class Simon
   end
 
   def require_sequence
-    
+
   end
 
   def add_random_color
-
+    color = COLORS.sample
+    color.push(sample)
   end
 
   def round_success_message
