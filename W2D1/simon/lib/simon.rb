@@ -25,10 +25,11 @@ class Simon
     if guess == @seq
       round_success_message
       @sequence_length += 1
-    end 
+    end
   end
 
   def show_sequence
+    add_random_color
     @seq.each do |color|
       puts color.colorize(color.to_sym)
       sleep(1)
