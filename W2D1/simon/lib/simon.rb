@@ -35,7 +35,7 @@ class Simon
   end
 
   def game_over_message
-  
+    puts "Game Over!"
   end
 
   def reset_game
