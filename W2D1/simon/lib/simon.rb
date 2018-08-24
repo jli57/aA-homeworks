@@ -25,6 +25,7 @@ class Simon
     if guess == @seq
       round_success_message
       @sequence_length += 1
+    end 
   end
 
   def show_sequence
