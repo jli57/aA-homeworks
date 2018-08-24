@@ -16,7 +16,13 @@ class Simon
 
   def take_turn
     show_sequence
-    require_sequence
+    guess = require_sequence
+    if guess == @seq
+      round_success_message
+      @sequence_length += 1
+    else
+      @game_over = true
+    end
   end
 
   def show_sequence
@@ -33,7 +39,7 @@ class Simon
     while i > 0
       print "Guess Color \##{i}: "
       guess << gets.chomp
-      i += 1
+      i -= 1
     end
     guess
   end
