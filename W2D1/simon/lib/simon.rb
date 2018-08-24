@@ -40,7 +40,7 @@ class Simon
 
   def add_random_color
     color = COLORS.sample
-    color.push(sample)
+    @seq.push(color)
   end
 
   def round_success_message
