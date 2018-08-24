@@ -11,6 +11,11 @@ class Simon
   def play
     until @game_over
       take_turn
+
+    end
+    if @game_over
+      game_over_message
+      reset_game
     end
   end
 
@@ -20,9 +25,6 @@ class Simon
     if guess == @seq
       round_success_message
       @sequence_length += 1
-    else
-      @game_over = true
-    end
   end
 
   def show_sequence
