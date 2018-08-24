@@ -5,13 +5,13 @@ class Simon
   attr_accessor :sequence_length, :game_over, :seq
 
   def initialize
-    @sequence_length = 0
-    @game_over = false
-    @seq = []
+    reset_game
   end
 
   def play
-
+    until @game_over
+      take_turn
+    end
   end
 
   def take_turn
@@ -35,10 +35,12 @@ class Simon
   end
 
   def game_over_message
-
+  
   end
 
   def reset_game
-
+    @sequence_length = 0
+    @game_over = false
+    @seq = []
   end
 end
