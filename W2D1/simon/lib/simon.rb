@@ -31,6 +31,7 @@ class Simon
     i = @sequence_length
     guess = []
     while i > 0
+      print "Guess Color \##{i}: "
       guess << gets.chomp
       i += 1
     end
@@ -51,7 +52,7 @@ class Simon
   end
 
   def reset_game
-    @sequence_length = 0
+    @sequence_length = 1
     @game_over = false
     @seq = []
   end
