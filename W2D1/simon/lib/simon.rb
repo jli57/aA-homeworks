@@ -9,6 +9,9 @@ class Simon
   end
 
   def play
+    system("clear")
+    print "Let the games begin! Remember the color sequence and guess the colors in order."
+    sleep(1.5)
     until @game_over
       take_turn
     end
@@ -19,33 +22,35 @@ class Simon
   end
 
   def take_turn
-    unless @game_over
-      round_success_message
-      @sequence_length += 1
-    end
     show_sequence
     guess = require_sequence
+    unless @game_over
+      puts ""
+      round_success_message
+      @sequence_length += 1
+      sleep(1)
+    end
   end
 
   def show_sequence
+    system("clear")
     add_random_color
     @seq.each do |color|
       puts color.colorize(color.to_sym)
       sleep(1)
       system("clear")
     end
-
   end
 
   def require_sequence
-    i = 1
-    guess = []
-    while i < @sequence_length
-      print "Guess Color \##{i}: "
-      guess << gets.chomp
-      i += 1
+    @seq.each_with_index do |color, ind|
+      print "Guess Color \##{ind+1}: "
+      guess = gets.chomp.strip
+      if color != guess
+        @game_over = true
+        break
+      end
     end
-    guess
   end
 
   def add_random_color
@@ -54,7 +59,7 @@ class Simon
   end
 
   def round_success_message
-    puts "Congratulations, you succesfully gave the colors"
+    puts "Congratulations, you guessed the colors in the correct order!"
   end
 
   def game_over_message
@@ -67,6 +72,3 @@ class Simon
     @seq = []
   end
 end
-
-game = Simon.new
-game.play
