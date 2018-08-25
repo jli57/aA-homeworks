@@ -40,7 +40,7 @@ class Simon
   def require_sequence
     i = 1
     guess = []
-    while i < @seq
+    while i < @sequence_length
       print "Guess Color \##{i}: "
       guess << gets.chomp
       i += 1
