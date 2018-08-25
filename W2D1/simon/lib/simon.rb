@@ -38,12 +38,12 @@ class Simon
   end
 
   def require_sequence
-    i = @sequence_length
+    i = 1
     guess = []
-    while i > 0
+    while i < @seq
       print "Guess Color \##{i}: "
       guess << gets.chomp
-      i -= 1
+      i += 1
     end
     guess
   end
@@ -69,3 +69,4 @@ class Simon
 end
 
 game = Simon.new
+game.play
