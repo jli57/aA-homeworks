@@ -19,10 +19,16 @@ class Board
   end
 
   def make_move(start_pos, current_player_name)
+    if valid_move?(Starting)
+      stones = @cups[start_pos].count
+      @cups[start_pos].clear
+    end
+    render
   end
 
   def next_turn(ending_cup_idx)
     # helper method to determine whether #make_move returns :switch, :prompt, or ending_cup_idx
+
   end
 
   def render
@@ -34,8 +40,10 @@ class Board
   end
 
   def one_side_empty?
+    @cups[0..6].all?(&:empty?) || @cups[7..12].all?(&:empty?)
   end
 
   def winner
+
   end
 end
