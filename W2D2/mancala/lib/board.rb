@@ -16,12 +16,13 @@ class Board
   def valid_move?(start_pos)
     raise "Invalid starting cup" unless (0..13).include?(start_pos)
     raise "Starting cup is empty" if @cups[start_pos].empty?
+    true
   end
 
   def make_move(start_pos, current_player_name)
-    if valid_move?(Starting)
+    if valid_move?(start_pos)
       stones = @cups[start_pos].count
-      @cups[start_pos].clear
+      @cups[start_pos] = []
     end
     render
   end
