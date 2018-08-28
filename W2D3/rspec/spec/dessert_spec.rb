@@ -6,10 +6,10 @@ Instructions: implement all of the pending specs (the `it` statements without bl
 =end
 
 describe Dessert do
+  subject(:dessert) { Dessert.new("cookies", 5, chef) }
   let(:chef) { double("chef") }
-  describe "#initialize" do
-    subject(:dessert) { Dessert.new("cookies", 5, chef) }
 
+  describe "#initialize" do
     it "sets a type" do
       expect(dessert.type).to eq("cookies")
     end
@@ -28,7 +28,13 @@ describe Dessert do
   end
 
   describe "#add_ingredient" do
-    it "adds an ingredient to the ingredients array"
+    before(:each) do
+      dessert.add_ingredient("butter")
+    end
+
+    it "adds an ingredient to the ingredients array" do
+      expect( dessert.ingredients ).to eq(["butter"])
+    end
   end
 
   describe "#mix!" do
