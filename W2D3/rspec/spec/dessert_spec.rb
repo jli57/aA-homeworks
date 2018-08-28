@@ -61,6 +61,10 @@ describe Dessert do
   end
 
   describe "#serve" do
+    before do
+      allow(chef).to receive(:name).and_return("chef")
+      allow(chef).to receive(:titleize).and_return(chef.name.capitalize)
+    end
     it "contains the titleized version of the chef's name" do
       expect( dessert.serve ).to include("Chef")
     end
