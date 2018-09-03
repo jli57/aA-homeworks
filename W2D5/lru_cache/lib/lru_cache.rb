@@ -22,9 +22,9 @@ class LRUCache
   end
 
   def show
-    @store
+    p @store
+    nil
   end
-
 
   private
   # helper methods go here!
