@@ -31,14 +31,19 @@ class Play
   end
 
   def self.find_by_playwright(name)
-    @playwright_id = Playwright.find_by_name(name)
-    PlayDBConnection.instance.execute(<<-SQL, @playwright_id)
+    PlayDBConnection.instance.execute(<<-SQL, @name = name)
       SELECT
-        *
+        a.id, a.title, a.year
       FROM
-        plays
+        plays AS a
+      INNER JOIN
+        playwrights AS b
+      ON
+        a.playwright_id = b.id
       WHERE
-        playwright_id = ?
+        b.name = ?
+      ORDER BY
+        a.year
     SQL
   end
 

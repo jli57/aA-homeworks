@@ -47,8 +47,8 @@ class Playwright
   end
 
   def get_plays(name)
-
-    raise "#{self} not in db"
+    raise "#{self} not in db" unless @id
+    Play.find_by_playwright(name)
   end
 
 end
