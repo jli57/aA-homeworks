@@ -1,4 +1,15 @@
+# == Schema Information
+#
+# Table name: routes
+#
+#  id         :bigint(8)        not null, primary key
+#  number     :integer          not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class Route < ApplicationRecord
+
   has_many :buses,
     class_name: 'Bus',
     foreign_key: :route_id,
@@ -21,5 +32,12 @@ class Route < ApplicationRecord
 
   def better_drivers_query
     # TODO: your code here
+    hash = {}
+    all_buses = self.buses.includes(:drivers)
+    all_buses.each do |bus|
+      hash[bus.id] = bus.drivers.map { |driver| driver.name }
+    end
+    hash
   end
+
 end

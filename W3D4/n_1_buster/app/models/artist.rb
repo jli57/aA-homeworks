@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: artists
+#
+#  id         :bigint(8)        not null, primary key
+#  name       :string           not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class Artist < ApplicationRecord
   has_many :albums,
     class_name: 'Album',
@@ -16,5 +26,12 @@ class Artist < ApplicationRecord
 
   def better_tracks_query
     # TODO: your code here
+    albums_with_count = self.albums
+      .select("albums.*, COUNT(*) AS tracks_count")
+      .joins(:tracks)
+      .group("albums.id")
+    albums_with_count.map do |album|
+      [album.title, album.tracks_count]
+    end
   end
 end
