@@ -109,20 +109,27 @@ class MetaCorgiSnacks
     @box_id = box_id
   end
 
-  def method_missing(name, *args)
-    # Your code goes here...
-    stats_types = ["info", "tastiness"]
-    info, tastiness = stats_types.map do |type|
-      @snack_box.send("get_#{name}_#{type}", @box_id)
-    end
-
-    result = "#{name.capitalize}: #{info}: #{tastiness}"
-    tastiness > 30 ? "* #{result}" : result
-  end
-
+  # def method_missing(name, *args)
+  #   # Your code goes here...
+  #   stats_types = ["info", "tastiness"]
+  #   info, tastiness = stats_types.map do |type|
+  #     @snack_box.send("get_#{name}_#{type}", @box_id)
+  #   end
+  #
+    # result = "#{name.capitalize}: #{info}: #{tastiness}"
+    # tastiness > 30 ? "* #{result}" : result
+  # end
 
   def self.define_snack(name)
     # Your code goes here...
+    define_method(name) {
+      stats_types = ["info", "tastiness"]
+      info, tastiness = stats_types.map do |type|
+        @snack_box.send("get_#{name}_#{type}", @box_id)
+      end
+      result = "#{name.capitalize}: #{info}: #{tastiness}"
+      tastiness > 30 ? "* #{result}" : result
+    }
 
   end
 end
