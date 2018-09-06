@@ -35,7 +35,7 @@ end
 def star_wars
   #display the id, title and year of each Star Wars movie in movies.
   # hint: use 'select' and 'where'
-  Movie.where('title LIKE \'%Star Wars%\'').select(:id, :title, :yr)
+  Movie.where("title LIKE \'%Star Wars%\'").select(:id, :title, :yr)
 end
 
 
@@ -44,7 +44,11 @@ def below_average_years
   #with the count of movies scoring under 5 aliased as bad_movies,
   #in descending order
   # hint: use 'select', 'where', 'group', 'order'
-  Movie.where('score < 5').group(:yr).select('yr, COUNT(*) AS bad_movies').order('COUNT(*) DESC')
+  Movie
+    .where('score < 5')
+    .group(:yr)
+    .select('yr, COUNT(*) AS bad_movies')
+    .order('bad_movies DESC')
 end
 
 def alphabetized_actors
@@ -60,7 +64,9 @@ def pulp_fiction_actors
   # practice using joins
   # display the id and name of all actors in the movie Pulp Fiction
   # hint: use 'select', 'joins', 'where'
-  Actor.joins(:castings, :movies).where("movies.title = 'Pulp Fiction'").select("DISTINCT actors.id, actors.name")
+  Actor.joins(:movies)
+    .where("movies.title = 'Pulp Fiction'")
+    .select("actors.id, actors.name")
 end
 
 def uma_movies
@@ -68,7 +74,7 @@ def uma_movies
   # display the id, title, and year of movies Uma Thurman has acted in
   # order them by ascending year
   # hint: use 'select', 'joins', 'where', and 'order'
-  Actor.joins(:castings, :movies)
+  Actor.joins(:movies)
     .where("name = 'Uma Thurman'")
     .select("DISTINCT movies.id, movies.title, movies.yr")
     .order("movies.yr")
