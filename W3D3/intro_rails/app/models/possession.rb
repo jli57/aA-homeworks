@@ -1,0 +1,4 @@
+class Possession < ApplicationRecord
+
+
+end
