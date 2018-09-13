@@ -48,7 +48,6 @@ a {
   color: yellow;
 }
 
-
 nav a {
   padding: 0px 10px;
 }
@@ -165,4 +164,8 @@ nav input {
   background-color: #009999;
   text-align: center;
   padding: 50px;
+}
+
+footer {
+  text-align: center;
 }
