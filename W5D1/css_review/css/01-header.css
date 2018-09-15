@@ -13,11 +13,6 @@ body {
   background-color: #f00;
 }
 
-.header-logo {
-  border-right: 1px solid #ccc;
-  font-weight: 700;
-}
-
 .header a {
   display: block;
   padding: 10px 20px;

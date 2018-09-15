@@ -12,15 +12,15 @@
 .content-sidebar {
   float: left;
   width: 240px;
-  box-sizing: border-box;
   padding: 20px;
+  box-sizing: border-box;
 }
 
 .content-main {
   float: left;
   width: 660px;
-  box-sizing: border-box;
   padding: 20px;
+  box-sizing: border-box;
 }
 
 .content h1 {
