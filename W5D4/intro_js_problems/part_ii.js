@@ -40,3 +40,20 @@ Elephant.paradeHelper = (elephant) => {
 
 herd[0].play();
 Elephant.paradeHelper(micah);
+
+function dinerBreakfast() {
+  let foods = ['cheesey scrambled eggs please'];
+  let order = () => {
+    console.log(`I'd like ${foods.join(" and ")} please.`);
+  }
+  order();
+
+  return function(food) {
+    foods.push(food);
+    order();
+  }
+}
+
+let bfastOrder = dinerBreakfast();
+bfastOrder("chocolate chip pancakes");
+bfastOrder("grits");
