@@ -1,19 +1,19 @@
-// Simple Timeout
-window.setTimeout(() => alert('HAMMERTIME') , 5000);
-
-// Timeout Plus Closure
-let hammerTime = (time) => {
-  window.setTimeout(() => alert(`${time} is hammertime!`), time)
-}
+// // Simple Timeout
+// window.setTimeout(() => alert('HAMMERTIME') , 5000);
+//
+// // Timeout Plus Closure
+// let hammerTime = (time) => {
+//   window.setTimeout(() => alert(`${time} is hammertime!`), time)
+// }
 
 // Some tea? Some biscuits?
-
-const readline = require('readline');
-
-const reader = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
+//
+// const readline = require('readline');
+//
+// const reader = readline.createInterface({
+//   input: process.stdin,
+//   output: process.stdout
+// });
 
 function teaAndBiscuits () {
   let first, second;
@@ -65,4 +65,12 @@ const Noodles = new Dog ();
 
 // Noodles.chase(Markov);
 // Noodles.chase.call(Markov, Noodles);
-Noodles.chase.apply(Noodles, [Markov]);
+// Noodles.chase.apply(Noodles, [Markov]);
+
+
+function Test() {
+  this.name = 'Test';
+}
+
+const t = new Test ();
+console.log(t.name);
