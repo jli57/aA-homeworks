@@ -9627,24 +9627,105 @@ var Calculator = function (_React$Component) {
   function Calculator(props) {
     _classCallCheck(this, Calculator);
 
-    return _possibleConstructorReturn(this, (Calculator.__proto__ || Object.getPrototypeOf(Calculator)).call(this, props));
-    //your code here
+    var _this = _possibleConstructorReturn(this, (Calculator.__proto__ || Object.getPrototypeOf(Calculator)).call(this, props));
+
+    _this.state = { result: 0, num1: "", num2: "" };
+    _this.setNum1 = _this.setNum1.bind(_this);
+    _this.setNum2 = _this.setNum2.bind(_this);
+    _this.operate = _this.operate.bind(_this);
+    return _this;
   }
 
   //your code here
 
+
   _createClass(Calculator, [{
-    key: 'render',
+    key: "setNum1",
+    value: function setNum1(e) {
+      e.preventDefault();
+      var num1 = parseInt(e.target.value) || "";
+      this.setState({ num1: num1 });
+    }
+  }, {
+    key: "setNum2",
+    value: function setNum2(e) {
+      e.preventDefault();
+      var num2 = parseInt(e.target.value) || "";
+      this.setState({ num2: num2 });
+    }
+  }, {
+    key: "operate",
+    value: function operate(e) {
+      console.log(this.state);
+      e.preventDefault();
+      var _state = this.state,
+          result = _state.result,
+          num1 = _state.num1,
+          num2 = _state.num2;
+
+      switch (e.target.id) {
+        case "add":
+          result = num1 + num2;
+          break;
+        case "minus":
+          result = num1 - num2;
+          break;
+        case "multiply":
+          result = num1 * num2;
+          break;
+        case "divide":
+          result = num1 / num2;
+          break;
+        case "clear":
+          result = 0;
+          break;
+        default:
+          break;
+      }
+      num1 = "";
+      num2 = "";
+
+      this.setState({ result: result, num1: num1, num2: num2 });
+    }
+  }, {
+    key: "render",
     value: function render() {
       return _react2.default.createElement(
-        'div',
+        "div",
         null,
         _react2.default.createElement(
-          'h1',
+          "h1",
           null,
-          'Hello World'
+          this.state.result
         ),
-        '//your code will replace this'
+        _react2.default.createElement("input", { type: "text", onChange: this.setNum1, value: this.state.num1 }),
+        _react2.default.createElement("input", { type: "text", onChange: this.setNum2, value: this.state.num2 }),
+        _react2.default.createElement("br", null),
+        _react2.default.createElement(
+          "button",
+          { id: "add", onClick: this.operate },
+          "+"
+        ),
+        _react2.default.createElement(
+          "button",
+          { id: "minus", onClick: this.operate },
+          "-"
+        ),
+        _react2.default.createElement(
+          "button",
+          { id: "multiply", onClick: this.operate },
+          "*"
+        ),
+        _react2.default.createElement(
+          "button",
+          { id: "divide", onClick: this.operate },
+          "/"
+        ),
+        _react2.default.createElement(
+          "button",
+          { id: "clear", onClick: this.operate },
+          "Clear"
+        )
       );
     }
   }]);
