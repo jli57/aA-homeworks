@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   Route,
-  Link,
   NavLink
 } from 'react-router-dom';
 
@@ -16,10 +15,10 @@ class Rainbow extends React.Component {
       <div>
         <h1>Rainbow Router!</h1>
           {/* Your links should go here */}
-          <Link to="/red">Red</Link>
-          <Link to="/green">Green</Link>
-          <Link to="/blue">Blue</Link>
-          <Link to="/violet">Violet</Link>
+          <NavLink exact to="/red">Red</NavLink>
+          <NavLink exact to="/green">Green</NavLink>
+          <NavLink exact to="/blue">Blue</NavLink>
+          <NavLink exact to="/violet">Violet</NavLink>
         <div id="rainbow">
           {/* Your routes should go here */}
           <Route path="/red" component={Red} />
